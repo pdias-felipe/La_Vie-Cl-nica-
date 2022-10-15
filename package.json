@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pdias-felipe/La_Vie-desafio3/issues"
   },
-  "homepage": "https://github.com/pdias-felipe/La_Vie-desafio3#readme"
+  "homepage": "https://github.com/pdias-felipe/La_Vie-desafio3#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
