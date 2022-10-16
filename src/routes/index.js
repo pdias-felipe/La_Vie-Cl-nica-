@@ -24,7 +24,11 @@ routes.put('/psicologos/:id', (req, res) => {
 routes.delete('/psicologos/:id', (req, res) => {res.send ('psicologo deletado')});
 
 
+
+
 //rotas pacientes
+
+
 
 
 
