@@ -1,11 +1,11 @@
 const express = require('express');
-const psicologoController = require('../controllers/psicologoController')
+const psicologosController = require('../controllers/psicologosController')
 
 const routes = express.Router();
 
 
 //rotas psicologo (terminar)
-routes.get('/psicologos', psicologoController.listarPsicologos)
+routes.get('/psicologos', psicologosController.listarPsicologos)
 
 routes.get('/psicologos/:id', (req, res) => {
     console.log(req.params);
