@@ -1,4 +1,4 @@
-const Psicologos = require('../models/Psicologos');
+
 const Psicologo = require('../models/Psicologos')
 
 const psicologosController = {
@@ -11,7 +11,7 @@ const psicologosController = {
 
     async listarPsicologoId(req, res) {
         const { id } = req.params;
-        const {nome, email, senha, apresentaçao } = req.body;
+        
 
         const psicologoEncontrado = await Psicologo.findOne(
             {
