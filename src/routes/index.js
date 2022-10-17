@@ -6,22 +6,10 @@ const routes = express.Router();
 
 //rotas psicologo (terminar)
 routes.get('/psicologos', psicologosController.listarPsicologos)
-
-routes.get('/psicologos/:id', (req, res) => {
-    console.log(req.params);
-    res.send ('hellooo modafocaa!!')});
-
-routes.post('/psicologos', (req, res) => {
-    console.log(req.body) 
-    res.json (req.body)
-});
-
-routes.put('/psicologos/:id', (req, res) => {
-    console.log(req.body) 
-    res.json(req.body)
-});
-
-routes.delete('/psicologos/:id', (req, res) => {res.send ('psicologo deletado')});
+routes.get('/psicologos/:id', psicologosController.listarPsicologoId);
+routes.post('/psicologos', psicologosController.cadastrarPsicologo);
+routes.put('/psicologos/:id', psicologosController.atualizarPsicologo);
+routes.delete('/psicologos/:id', psicologosController.deletarPsicologo);
 
 
 

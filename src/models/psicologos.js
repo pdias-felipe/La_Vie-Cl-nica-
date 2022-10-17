@@ -21,7 +21,7 @@ const Psicologos = db.define('Psicologos',
         type: DataTypes.STRING
     },
 
-    apresentação: {
+    apresentaçao: {
         type: DataTypes.STRING
     },
 
