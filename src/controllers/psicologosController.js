@@ -41,7 +41,7 @@ const psicologosController = {
         const { id } = req.params;
         const {nome, email, senha, apresentaçao } = req.body;
 
-        const psicologoAtualizado = await Psicologo.update({
+        await Psicologo.update({
             nome, 
             email, 
             senha, 
