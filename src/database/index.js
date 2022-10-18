@@ -5,7 +5,7 @@ const sequelize = require('sequelize');
 //infos necessarias para conectar o BD
 const DB_NAME = 'lavie';
 const DB_USER = 'root';
-const DB_PASS = 'Jj020219*';
+const DB_PASS = 'fffpdias21.';
 const DB_CONFIG = {
     dialect:'mysql',
     host:'localhost',
