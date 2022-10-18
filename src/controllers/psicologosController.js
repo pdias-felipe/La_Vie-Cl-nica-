@@ -11,7 +11,7 @@ const psicologosController = {
 
     async listarPsicologoId(req, res) {
         const { id } = req.params;
-        
+        //if (!id) return res.status(404)        
         const psicologoEncontrado = await Psicologo.findOne(
             {
                 where: {
@@ -42,8 +42,9 @@ const psicologosController = {
         const { id } = req.params;
         const {nome, email, senha, apresentaçao } = req.body;
 
+        if (!nome || !email || !senha)  // se eu coloco apretação da status 400
+        return res.status(400).json('esta faltando informação')
         
-
         await Psicologo.update({
             nome, 
             email, 
@@ -56,12 +57,12 @@ const psicologosController = {
             }
         );
 
-        res.json("cadastro atualizado com sucesso!!!")
+        res.status(200).json(req.body)
     },
 
     async deletarPsicologo(req, res) {
         const { id } = req.params;
-
+        
         await Psicologo.destroy({
             where: {
                 id,
