@@ -21,7 +21,7 @@ const Pacientes = db.define('Pacientes',
         type: DataTypes.DATE
     },
 
-    pacientes_id: {
+    paciente_id: {
         type: DataTypes.INTEGER
     },
 
