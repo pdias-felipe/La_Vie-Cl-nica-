@@ -22,12 +22,12 @@ const Pacientes = db.define('Pacientes',
         type: DataTypes.DATE
     },
 
-    paciente_id: {
+    psicologo_id: {
         type: DataTypes.INTEGER,
         references: {
             model: Psicologos,
             key: 'id',
-        }
+        },
     },
 
     createdAt: {
