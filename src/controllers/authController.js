@@ -2,7 +2,7 @@ const { Psicologos } = require("../models/psicologos");
 const Login = require("../validations/auth/Login");
 
 const authController = {
-    async Login(req, res) {
+    async login(req, res) {
         const usuario = await Usuario.find({
             where: {
                 email,
