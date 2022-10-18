@@ -1,10 +1,10 @@
 
-const Paciente = require('../models/Pacientes')
+const { Pacientes } = require('../models')
 
 const pacientesController = {
     listarPacientes: async (req, res) =>{ //duas maneiras de escreve a mesma coisa (listarProduto e cadastrarProduto)
         
-        const listaDePacientes = await Paciente.findAll();  
+        const listaDePacientes = await Pacientes.findAll();  
         
         res.status(200).json(listaDePacientes)
     },
@@ -12,7 +12,7 @@ const pacientesController = {
     async listarPacienteId(req, res) {
         const { id } = req.params;
         
-        const pacienteEncontrado = await Paciente.findOne(
+        const pacienteEncontrado = await Pacientes.findOne(
             {
                 where: {
                     id,
@@ -24,14 +24,15 @@ const pacientesController = {
     },
 
     async cadastrarPaciente(req, res){
-        const {nome, email, idade} = req.body;
+        const {nome, email, idade, psicologo_id} = req.body;
         // if (!nome || !email || !idade)
         // return res.status(400).json('esta faltando informação')
 
-        const novoPaciente = await Paciente.create({
+        const novoPaciente = await Pacientes.create({
             nome,
             email,
-            idade
+            idade,
+            psicologo_id,
         })
 
         res.status(201).json(novoPaciente)
@@ -43,7 +44,7 @@ const pacientesController = {
 
         
 
-        await Paciente.update({
+        await Pacientes.update({
             nome, 
             email, 
             idade 
@@ -61,7 +62,7 @@ const pacientesController = {
     async deletarPaciente(req, res) {
         const { id } = req.params;
 
-        await Paciente.destroy({
+        await Pacientes.destroy({
             where: {
                 id,
             }
