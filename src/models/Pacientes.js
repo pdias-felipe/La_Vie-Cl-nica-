@@ -38,4 +38,4 @@ const Pacientes = db.define('Pacientes',
 });
 
 
-module.exports = Pacientes;
+module.exports = Pacientes; 
