@@ -39,9 +39,7 @@ const pacientesController = {
 
     async atualizarPaciente(req, res) {
         const { id } = req.params;
-        const {nome, email, idade } = req.body;
-
-        
+        const {nome, email, idade } = req.body;        
 
         await Pacientes.update({
             nome, 

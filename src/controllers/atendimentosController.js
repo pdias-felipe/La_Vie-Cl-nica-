@@ -1,10 +1,10 @@
 
-const Atendimento = require('../models/Atendimentos')
+const { Atendimentos } = require('../models')
 
 const atendimentosController = {
     listarAtendimentos: async (req, res) =>{ //duas maneiras de escreve a mesma coisa (listarProduto e cadastrarProduto)
         
-        const listaDeAtendimentos = await Atendimento.findAll();  
+        const listaDeAtendimentos = await Atendimentos.findAll();  
         
         res.status(200).json(listaDeAtendimentos)
     },
@@ -12,7 +12,7 @@ const atendimentosController = {
     async listarAtendimentoId(req, res) {
         const { id } = req.params;
         //if (!id) return res.status(404)        
-        const atendimentoEncontrado = await Atendimento.findOne(
+        const atendimentoEncontrado = await Atendimentos.findOne(
             {
                 where: {
                     id,
@@ -28,7 +28,7 @@ const atendimentosController = {
         
         return res.status(400).json('erro')
 
-        const novoAtendimento = await Atendimento.create({
+        const novoAtendimento = await Atendimentos.create({
             paciente_id,
             data_atendimento,
             observaçao
