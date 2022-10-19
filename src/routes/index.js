@@ -27,7 +27,6 @@ routes.post('/pacientes', pacientesController.cadastrarPaciente);
 routes.put('/pacientes/:id', pacientesController.atualizarPaciente);
 routes.delete('/pacientes/:id', pacientesController.deletarPaciente);
 
-
 //rotas atendimentos
 routes.get('/atendimentos', atendimentosController.listarAtendimentos)
 routes.get('/atendimentos/:id', atendimentosController.listarAtendimentoId);
