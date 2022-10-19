@@ -24,7 +24,7 @@ const pacientesController = {
     },
 
     async cadastrarPaciente(req, res){
-        const {nome, email, idade, psicologo_id} = req.body;
+        const {nome, email, idade} = req.body;
         // if (!nome || !email || !idade)
         // return res.status(400).json('esta faltando informação')
 
@@ -32,7 +32,6 @@ const pacientesController = {
             nome,
             email,
             idade,
-            psicologo_id,
         })
 
         res.status(201).json(novoPaciente)
