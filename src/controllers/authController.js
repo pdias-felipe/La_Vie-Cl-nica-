@@ -1,6 +1,6 @@
 const { Psicologos } = require("../models");
 const jwt = require("jsonwebtoken");
-const secret = require("../configs/secrets");
+const secret = require("../configs/secret")
 const Login = require("../validations/auth/login");
 
 const authController = {
