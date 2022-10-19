@@ -1,7 +1,12 @@
 const express = require('express');
 const psicologosController = require('../controllers/psicologosController')
+
+const requestLog = require("../middleware/requestLog");
+const authLoginValidation = require("../validations/auth/login");
+
 const pacientesController = require('../controllers/pacientesController');
 const atendimentosController = require('../controllers/atendimentosController');
+
 
 
 const routes = express.Router();
@@ -13,7 +18,7 @@ routes.get('/psicologos/:id', psicologosController.listarPsicologoId);
 routes.post('/psicologos', psicologosController.cadastrarPsicologo);
 routes.put('/psicologos/:id', psicologosController.atualizarPsicologo);
 routes.delete('/psicologos/:id', psicologosController.deletarPsicologo);
-
+routes.post('/login', requestLog, authLoginValidation, authController.login);
 
 //rotas pacientes
 routes.get('/pacientes', pacientesController.listarPacientes)
