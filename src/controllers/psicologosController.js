@@ -11,21 +11,26 @@ const psicologosController = {
 
     async listarPsicologoId(req, res) {
         const { id } = req.params;
-        //if (!id) return res.status(404)        
+              
         const psicologoEncontrado = await Psicologos.findOne(
             {
                 where: {
                     id,
-                }
+                },
+                attributes: { exclude: ['senha'] }
             }
         );
+
+        if (!psicologoEncontrado) { 
+            return res.status(404).json('ID não encontrado') 
+        };
 
         res.status(200).json(psicologoEncontrado)
     },
 
     async cadastrarPsicologo(req, res) {
         const { nome, email, senha, apresentaçao } = req.body;
-        if (!nome || !email || !senha)  // se eu coloco apretação da status 400
+        if (!nome || !email || !senha || !apresentaçao)  
             return res.status(400).json('esta faltando informação')
 
         const novoPsicologo = await Psicologos.create({
@@ -42,8 +47,9 @@ const psicologosController = {
         const { id } = req.params;
         const { nome, email, senha, apresentaçao } = req.body;
 
-        if (!nome || !email || !senha)  // se eu coloco apretação da status 400
-            return res.status(400).json('esta faltando informação')
+        if (!nome || !email || !senha || !apresentaçao) { 
+            return res.status(400).json('erro na requisição, tente novamente!!!')
+        };
 
         await Psicologos.update({
             nome,
@@ -63,6 +69,11 @@ const psicologosController = {
 
     async deletarPsicologo(req, res) {
         const { id } = req.params;
+        const psicologoEncontrado = await Psicologos.findByPk(id);
+
+        if (!psicologoEncontrado) { 
+            return res.status(404).json('ID não encontrado') 
+        };
 
         await Psicologos.destroy({
             where: {

@@ -19,14 +19,19 @@ const pacientesController = {
                 }
             }
         );
-
+        
+        if (!pacienteEncontrado) { 
+            return res.status(404).json('ID não encontrado') 
+        };
         res.status(200).json(pacienteEncontrado)
     },
 
     async cadastrarPaciente(req, res){
         const {nome, email, idade} = req.body;
-        // if (!nome || !email || !idade)
-        // return res.status(400).json('esta faltando informação')
+        
+        if (!nome || !email || !idade){
+        return res.status(400).json('esta faltando informação')
+        };
 
         const novoPaciente = await Pacientes.create({
             nome,
@@ -40,6 +45,10 @@ const pacientesController = {
     async atualizarPaciente(req, res) {
         const { id } = req.params;
         const {nome, email, idade } = req.body;        
+
+        if (!nome || !email || !idade){
+            return res.status(400).json('esta faltando informação')
+            };
 
         await Pacientes.update({
             nome, 
@@ -58,6 +67,12 @@ const pacientesController = {
 
     async deletarPaciente(req, res) {
         const { id } = req.params;
+
+        const pacienteEncontrado = await Pacientes.findByPk(id);
+
+        if (!pacienteEncontrado) { 
+            return res.status(404).json('ID não encontrado') 
+        };
 
         await Pacientes.destroy({
             where: {

@@ -7,7 +7,7 @@ const authController = {
     async login(req, res) {
         const { email, senha } = req.body;
 
-        const psicologos = await Psicologos.findAll({
+        const psicologos = await Psicologos.findOne({
             where: {
                 email,
                 senha,
@@ -25,7 +25,7 @@ const authController = {
             secret.key
         );
 
-        return res.json("Logado!");
+        return res.json(token);
     },
 
 };

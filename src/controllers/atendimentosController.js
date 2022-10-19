@@ -24,14 +24,12 @@ const atendimentosController = {
     },
 
     async cadastrarAtendimento(req, res){
-        const {paciente_id, data_atendimento, observaçao } = req.body;
+        const {paciente_id, data_atendimento, observaçao} = req.body;
         
-        return res.status(400).json('erro')
-
-        const novoAtendimento = await Atendimentos.create({
+            const novoAtendimento = await Atendimentos.create({
             paciente_id,
             data_atendimento,
-            observaçao
+            observaçao,          
         })
 
         res.status(201).json(novoAtendimento)
