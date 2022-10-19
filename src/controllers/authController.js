@@ -1,18 +1,20 @@
-const { Psicologos } = require("../models/psicologos");
-const Login = require("../validations/auth/Login");
+const { Psicologos } = require("../models");
+const Login = require("../validations/auth/login");
 
 const authController = {
     async login(req, res) {
-        const usuario = await Usuario.find({
+        const { email, senha } = req.body;
+
+        const psicologos = await Psicologos.findAll({
             where: {
                 email,
                 senha,
             },
         });
-        if (!usuario || !usuario.senha) {
+        if (Login == !psicologos.email || !psicologos.senha) {
             return res.status(401).json("E-mail ou senha inválido, verifique e tente novamente");
         }
-            return res.json("Logado!");
+        return res.json("Logado!");
     },
 
 };
