@@ -9,7 +9,7 @@ const pacientesController = require('../controllers/pacientesController');
 const atendimentosController = require('../controllers/atendimentosController');
 
 
-
+const auth = require("../middleware/auth")
 const routes = express.Router();
 
 
@@ -19,7 +19,7 @@ routes.get('/psicologos/:id', psicologosController.listarPsicologoId);
 routes.post('/psicologos', psicologosController.cadastrarPsicologo);
 routes.put('/psicologos/:id', psicologosController.atualizarPsicologo);
 routes.delete('/psicologos/:id', psicologosController.deletarPsicologo);
-routes.post('/login', requestLog, authLoginValidation, authController.login);
+routes.post('/login', requestLog, auth, authLoginValidation, authController.login);
 
 //rotas pacientes
 routes.get('/pacientes', pacientesController.listarPacientes)
