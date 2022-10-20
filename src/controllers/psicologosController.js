@@ -45,6 +45,7 @@ const psicologosController = {
 
     async atualizarPsicologo(req, res) {
         const { id } = req.params;
+        
         const { nome, email, senha, apresentaçao } = req.body;
 
         if (!nome || !email || !senha || !apresentaçao) { 
