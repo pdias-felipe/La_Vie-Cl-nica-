@@ -5,7 +5,8 @@ const Login = require("../validations/auth/login");
 
 const authController = {
     async login(req, res) {
-        const { email, senha } = req.body;
+        try {
+            const { email, senha } = req.body;
 
         const psicologos = await Psicologos.findOne({
             where: {
@@ -26,6 +27,10 @@ const authController = {
         );
 
         return res.json(token);
+
+        } catch (error) {
+            return res.status(500)
+        }        
     },
 
 };
