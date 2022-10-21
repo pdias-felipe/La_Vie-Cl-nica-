@@ -8,7 +8,7 @@ const psicologosController = {
 
         res.status(200).json(listaDePsicologos)
         } catch (error) {
-            res.status(500)
+            res.status(500).json({Error})
         }        
     },
 
@@ -32,7 +32,7 @@ const psicologosController = {
         res.status(200).json(psicologoEncontrado)
             
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
         
     },
@@ -40,21 +40,22 @@ const psicologosController = {
     async cadastrarPsicologo(req, res) {
         try {
             const { nome, email, senha, apresentaçao } = req.body;
-        if (!nome || !email || !senha || !apresentaçao)  
+        if (!nome || !email || !senha || !apresentaçao) {
             return res.status(400).json('esta faltando informação')
+        }
 
         const novoPsicologo = await Psicologos.create({
             nome,
             email,
             senha,
             apresentaçao
-        })
-
-        res.status(201).json(novoPsicologo)
-        } catch (error) {
-            return res.status(500)
-        }
+        })       
         
+        res.status(201).json(novoPsicologo)        
+
+        } catch (error) {
+            return res.status(500).json({Error})
+        }        
     },
 
     async atualizarPsicologo(req, res) {
@@ -83,7 +84,7 @@ const psicologosController = {
         res.status(200).json(req.body)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
         
     },
@@ -105,7 +106,7 @@ const psicologosController = {
 
         res.status(204).json();
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
         
     }

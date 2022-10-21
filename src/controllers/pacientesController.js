@@ -9,7 +9,7 @@ const pacientesController = {
         res.status(200).json(listaDePacientes)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }       
     },
 
@@ -31,7 +31,7 @@ const pacientesController = {
         res.status(200).json(pacienteEncontrado)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }        
     },
 
@@ -52,7 +52,7 @@ const pacientesController = {
         res.status(201).json(novoPaciente)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }        
     },
 
@@ -80,7 +80,7 @@ const pacientesController = {
         res.json("cadastro atualizado com sucesso!!!")
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
     },
 
@@ -103,7 +103,7 @@ const pacientesController = {
         res.status(204).json();
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
         
     }

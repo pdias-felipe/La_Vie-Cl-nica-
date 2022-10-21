@@ -9,7 +9,7 @@ const atendimentosController = {
         res.status(200).json(listaDeAtendimentos)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }       
     },
 
@@ -30,7 +30,7 @@ const atendimentosController = {
         res.status(200).json(atendimentoEncontrado)
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }        
     },
 
@@ -48,11 +48,12 @@ const atendimentosController = {
             observaçao,   
             psicologo_id: req.auth.id       
         })
-
+        
         res.status(201).json(novoAtendimento)
+        throw new Error()
 
         } catch (error) {
-            return res.status(500)
+            return res.status(500).json({Error})
         }
         
     },
