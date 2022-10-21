@@ -2,15 +2,20 @@
 const { Pacientes } = require('../models')
 
 const pacientesController = {
-    listarPacientes: async (req, res) =>{ //duas maneiras de escreve a mesma coisa (listarProduto e cadastrarProduto)
-        
-        const listaDePacientes = await Pacientes.findAll();  
+    listarPacientes: async (req, res) => { //duas maneiras de escreve a mesma coisa (listarProduto e cadastrarProduto)
+        try {
+            const listaDePacientes = await Pacientes.findAll();  
         
         res.status(200).json(listaDePacientes)
+
+        } catch (error) {
+            return res.status(500)
+        }       
     },
 
     async listarPacienteId(req, res) {
-        const { id } = req.params;
+        try {
+            const { id } = req.params;
         
         const pacienteEncontrado = await Pacientes.findOne(
             {
@@ -24,10 +29,15 @@ const pacientesController = {
             return res.status(404).json('ID não encontrado') 
         };
         res.status(200).json(pacienteEncontrado)
+
+        } catch (error) {
+            return res.status(500)
+        }        
     },
 
     async cadastrarPaciente(req, res){
-        const {nome, email, idade} = req.body;
+        try {
+            const {nome, email, idade} = req.body;
         
         if (!nome || !email || !idade){
         return res.status(400).json('esta faltando informação')
@@ -40,10 +50,15 @@ const pacientesController = {
         })
 
         res.status(201).json(novoPaciente)
+
+        } catch (error) {
+            return res.status(500)
+        }        
     },
 
     async atualizarPaciente(req, res) {
-        const { id } = req.params;
+        try {
+            const { id } = req.params;
         const {nome, email, idade } = req.body;        
 
         if (!nome || !email || !idade){
@@ -63,10 +78,15 @@ const pacientesController = {
         );
 
         res.json("cadastro atualizado com sucesso!!!")
+
+        } catch (error) {
+            return res.status(500)
+        }
     },
 
     async deletarPaciente(req, res) {
-        const { id } = req.params;
+        try {
+            const { id } = req.params;
 
         const pacienteEncontrado = await Pacientes.findByPk(id);
 
@@ -81,6 +101,11 @@ const pacientesController = {
         });
 
         res.status(204).json();
+
+        } catch (error) {
+            return res.status(500)
+        }
+        
     }
 }
 
