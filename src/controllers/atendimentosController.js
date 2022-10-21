@@ -50,8 +50,7 @@ const atendimentosController = {
         })
         
         res.status(201).json(novoAtendimento)
-        throw new Error()
-
+        
         } catch (error) {
             return res.status(500).json({Error})
         }
