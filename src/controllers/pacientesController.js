@@ -104,8 +104,7 @@ const pacientesController = {
 
         } catch (error) {
             return res.status(500).json({Error})
-        }
-        
+        }        
     }
 }
 
